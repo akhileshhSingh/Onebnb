@@ -12,6 +12,7 @@ import PlacesFormPage from './pages/PlacesFormPage.jsx';
 import PlacePage from './pages/PlacePage.jsx';
 import BookingsPage from './pages/BookingsPage.jsx';
 import BookingPage from './pages/BookingPage.jsx';
+import SearchPage from './pages/SearchPage.jsx';
 
 
 axios.defaults.baseURL ='http://127.0.0.1:4000';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Layout />}>
         <Route index element={<IndexPage />}/>
         <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/search/:query' element={<SearchPage/>}/>
         <Route path='/register' element={<RegisterPage/>}/>
         <Route path='/account' element={<ProfilePage/>} />
         <Route path='/account/places' element={<PlacesPage/>} />

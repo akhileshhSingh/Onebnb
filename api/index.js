@@ -211,6 +211,22 @@ app.put('/places', async(req,res) =>{
 app.get('/places', async (req,res) =>{
     res.json( await Place.find());
 });
+
+app.get('/placess/:query1',async(req,res) =>{
+    const {query1} = req.params;
+    const regex = new RegExp(query1, 'i')
+    console.log(regex);
+    let places=await Place.find();
+    let newArr=[];
+    places.forEach((x, i)=>{
+        if(x.address.toLowerCase().includes(query1.toLowerCase())){
+            newArr.push(x);
+        }
+    })
+    res.json(newArr);
+    res.end();
+});
+
 //authenticated users to make bookings for places in the system
 app.post('/bookings',async (req,res) => {
     const userData = await getUserDataFromReq(req);
